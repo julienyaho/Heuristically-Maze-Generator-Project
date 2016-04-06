@@ -83,6 +83,11 @@ public class GameRunner implements KeyListener{
 			model[r][c] = 'F';
 			flag=true;
 			return true;
+		}else if (r <= model.length - 1 && c <= model[r].length - 1 && model[r][c] == 'W'){
+			model[currentRow][currentCol] = 'P';
+			model[r][c] = 'X';
+			
+			return false;
 		}
 		/*else if (r <= model.length - 1 && c <= model[r].length - 1 && model[r][c] == 'P'){
 			model[currentRow][currentCol] = ' ';

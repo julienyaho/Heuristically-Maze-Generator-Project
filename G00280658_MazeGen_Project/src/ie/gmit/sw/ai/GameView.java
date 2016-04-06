@@ -21,6 +21,7 @@ public class GameView extends JPanel implements ActionListener{
 	private int currentCol;
 	private boolean zoomOut = false;
 	private int imageIndex = -1;
+	private static Maze m=new Maze();
 
 	public GameView(char[][] maze) throws Exception{
 		init();
@@ -73,6 +74,9 @@ public class GameView extends JPanel implements ActionListener{
 						g2.fillRect(x1, y1, size, size);
 						continue;
 					}
+					g2.setColor(Color.blue);
+					g2.fillRect(20*size, 25*size, size, size);
+				
 				}else{
 					ch = maze[currentRow - cellpadding + row][currentCol - cellpadding + col];
 				}
@@ -104,6 +108,17 @@ public class GameView extends JPanel implements ActionListener{
 					g2.setColor(Color.LIGHT_GRAY);
 					g2.fillRect(x1, y1, size, size);
 				}      		
+			}
+		}
+		for(int i=0;i<new Maze().path.length;i++){
+			for(int j=0;j<new Maze().path[i].length;j++){
+				int xx=j*size;
+				int yy=i*size;
+				
+				if(m.path[i][j]==1){
+					g2.setColor(Color.red);
+					g2.drawString("1",xx , yy);
+				}
 			}
 		}
 	}
